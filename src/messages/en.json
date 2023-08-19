@@ -1,0 +1,13 @@
+{
+  "Home": {
+    "header1": "Play Chess",
+    "header2": "Online",
+    "header3": "on the #1 Site!",
+    "subheader1": "Games today",
+    "subheader2": "Now playing",
+    "PlayOnline": "Play Online",
+    "PlayOnlineSubheader":"Play with someone at your level",
+    "PlayComputer": "Play Computer",
+    "PlayComputerSubheader": "Play vs customizable training bots"
+  }
+}
