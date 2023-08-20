@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reactuses/core": "^4.0.5",
     "@types/color": "^3.0.3",
     "@types/node": "20.4.10",
     "@types/react": "18.2.20",
@@ -22,6 +23,7 @@
     "normalize.css": "^8.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
     "styled-components": "^6.0.7",
     "typescript": "5.1.6"
   },

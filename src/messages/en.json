@@ -9,5 +9,9 @@
     "PlayOnlineSubheader":"Play with someone at your level",
     "PlayComputer": "Play Computer",
     "PlayComputerSubheader": "Play vs customizable training bots"
+  },
+  "Global": {
+    "SignIn":"Sign in",
+    "LogIn":"Log in"
   }
 }

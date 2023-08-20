@@ -5,12 +5,11 @@ import {darken} from "@/helpers/darken";
 import React from "react";
 export const Sidebar = ()=>{
     return (
-
         <Divider>
             <Container>
-                <SidebarContainer><SidebarItem positionX = "-22px" positionY = "13px"  href = '/'/></SidebarContainer>
+                <SidebarContainer><SidebarItem $positionX = "-22px" $positionY = "13px"  href = '/'/></SidebarContainer>
                 <SidebarContainer>
-                    <SidebarItem positionX = "-22px" positionY = "-67px"  href = '/'/>
+                    <SidebarItem $positionX = "-22px" $positionY = "-67px"  href = '/'/>
                     <SidebarContainerText>Play</SidebarContainerText>
                 </SidebarContainer>
             </Container>
@@ -19,8 +18,10 @@ export const Sidebar = ()=>{
 }
 
 interface ISidebarItem{
-    positionX:string,
-    positionY:string,
+    $positionX:string,
+    $positionY:string,
+
+
 }
 
 const Container = styled.div`
@@ -28,10 +29,14 @@ const Container = styled.div`
   background: ${props => props.theme.palette.primary.color.secondary};
   width:145px;
   position: fixed;
+  
 `
 
 const Divider = styled.div`
     margin-right: 145px;
+  @media(max-width:1000px){
+    display: none;
+  }
 `
 
 const SidebarItem = styled(Link)<ISidebarItem>`
@@ -41,7 +46,7 @@ const SidebarItem = styled(Link)<ISidebarItem>`
   
   
   &:before {
-    background: ${props => `url(${sprite.src}) ${props.positionX} ${props.positionY}`};
+    background: ${props => `url(${sprite.src}) ${props.$positionX} ${props.$positionY}`};
     background-size: 9.4rem auto;
     content: '';
     width: 120px;
@@ -49,9 +54,6 @@ const SidebarItem = styled(Link)<ISidebarItem>`
     display: block;
     margin-left: 10px;
   }
-
-  
-  
 `
 
 const SidebarContainer = styled.div`

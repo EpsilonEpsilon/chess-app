@@ -1,5 +1,5 @@
 'use client';
-import {Sidebar} from "@/shared/Sidebar";
+
 import styled from "styled-components";
 import Image from "next/image";
 import board from './../../../../public/assets/img/chessboard-home.png'
@@ -7,26 +7,26 @@ import {useTranslations} from "use-intl";
 import {Button, ButtonType} from "@/shared/Button";
 import playOnline from "@public/assets/svg/playwhite.svg"
 import playComputer from "@public/assets/svg/computer.svg";
+import {useMediaQuery} from "@/hook/useMediaQuery";
+
 const Home = ()=>{
     const t = useTranslations("Home");
+    const isBoard = useMediaQuery('(min-width:890px)');
+
 
     return(
         <Container>
-            <Sidebar/>
             <Main>
                 <ImgContainer>
-                    <Board src = {board} alt = {'chess-board'}/>
+                    <Board priority src = {board} alt = {'chess-board'}/>
                 </ImgContainer>
 
                 <Content>
                     <Header>
                         {t("header1")}
-                        <br/>
                         {t("header2")}
-                        <br/>
                         {t("header3")}
                     </Header>
-
 
                     <SubHeaderContainer>
                         <SubHeaderItem><Number>Nan</Number>{t("subheader1")}</SubHeaderItem>
@@ -66,6 +66,7 @@ const Main = styled.main`
   height: 100%;
   display: flex;
   justify-content: space-evenly;
+  padding: 15px;
   
 `
 
@@ -84,11 +85,13 @@ const Content = styled.div`
 `
 
 const Header = styled.h1`
-    color:#fff;
-    font-weight: 700;
+  color:#fff;
+  width: 100%;
+  max-width: 430px;
+  font-weight: 700;
   line-height: 60px;
   text-align:center;
-  font-size: clamp(15px,4vw,5.8rem);
+  font-size: clamp(15px,4vw,3.8rem);
 `
 const SubHeaderContainer = styled.div`
     display: flex;
@@ -105,8 +108,13 @@ const ImgContainer = styled.div`
   width: 500px;
   height:500px;
   min-width: 120px;
+  margin-right:40px;
   
   max-height: 500px;
+  
+  @media(max-width: 890px){
+    display: none;
+  }
 `
 
 const Number = styled.b`

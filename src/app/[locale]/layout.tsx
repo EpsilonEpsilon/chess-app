@@ -1,12 +1,13 @@
 'use client'
 import StyledComponentsRegistry from '../lib/registry';
-import {ThemeProvider} from "styled-components";
+import styled, {ThemeProvider} from "styled-components";
 import theme from "@/theme";
 import React from "react";
 import '@/style/global.css';
 import {NextIntlClientProvider} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {openSans} from "@/fonts/OpenSans";
+import {Root} from "./Root"
 
 
 
@@ -33,12 +34,12 @@ export default async function RootLayout({children,  params: {locale}}: {
       <head>
           <title>Chess Application</title>
       </head>
-      {/* eslint-disable-next-line react/jsx-no-undef */}
-      <body>
+      <body  suppressHydrationWarning={true}>
           <StyledComponentsRegistry>
               <ThemeProvider theme={theme}>
                   <NextIntlClientProvider locale={locale} messages={messages}>
-                      {children}
+                      <Root>{children}</Root>
+
                   </NextIntlClientProvider>
               </ThemeProvider>
           </StyledComponentsRegistry>
@@ -46,4 +47,5 @@ export default async function RootLayout({children,  params: {locale}}: {
       </html>
   )
 }
+
 

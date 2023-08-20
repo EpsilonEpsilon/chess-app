@@ -9,7 +9,7 @@ export enum ButtonType{
 type ButtonShadowStyleType = ('buttonShadowLight' | 'buttonShadowDark')
 type ButtonStyleType = ('buttonLight' | 'buttonDark')
 interface ButtonProps{
-    $3D:boolean,
+    $3D?:boolean,
     $width?:string,
     $height?:string
     $type:ButtonType
