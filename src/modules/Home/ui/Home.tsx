@@ -8,6 +8,7 @@ import {Button, ButtonType} from "@/shared/Button";
 import playOnline from "@public/assets/svg/playwhite.svg"
 import playComputer from "@public/assets/svg/computer.svg";
 import {useMediaQuery} from "@/hook/useMediaQuery";
+import {Typography} from "@/shared/Typography";
 
 const Home = ()=>{
     const t = useTranslations("Home");
@@ -23,9 +24,9 @@ const Home = ()=>{
 
                 <Content>
                     <Header>
-                        {t("header1")}
-                        {t("header2")}
-                        {t("header3")}
+                        <Typography>{t("header1")}</Typography>
+                        <Typography>{t("header2")}</Typography>
+                        <Typography>{t("header3")}</Typography>
                     </Header>
 
                     <SubHeaderContainer>
@@ -91,17 +92,27 @@ const Header = styled.h1`
   font-weight: 700;
   line-height: 60px;
   text-align:center;
-  font-size: clamp(15px,4vw,3.8rem);
+  font-size: clamp(40px,4vw,3.8rem);
 `
 const SubHeaderContainer = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
+  
+  @media(max-width: 330px){
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
 `
 const SubHeaderItem = styled.p`
     color:#797876;
     display: flex;
   text-align: center;
+  @media(max-width: 330px){
+    margin: 10px 0;
+    text-align: left;
+  }
 `
 const ImgContainer = styled.div`
   max-width: 100%;
@@ -150,13 +161,12 @@ const ButtonText = styled.div`
 `
 
 const ButtonHeader = styled.p`
-    font-size: 28px;
     font-weight: bold;
-  
+    font-size: clamp(18px, 3vw, 28px);
 `
 
 const ButtonSubheader = styled.p`
-    font-size: 14px;
+  font-size: clamp(13px, 3vw, 14px);
 `
 
 const SvgIcon = styled(Image)`

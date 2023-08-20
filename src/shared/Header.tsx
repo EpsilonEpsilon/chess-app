@@ -9,7 +9,7 @@ import {useMediaQuery} from "@/hook/useMediaQuery";
 export const Header = ()=>{
     const t = useTranslations("Global");
 
-    const matched = useMediaQuery('(max-width:)')
+    const matched = useMediaQuery('(min-width:400px)')
     return (
         <Container>
             <Left>
@@ -18,7 +18,7 @@ export const Header = ()=>{
             </Left>
             <Right>
                 <HeaderButton $type={ButtonType.Light}>{t("SignIn")}</HeaderButton>
-                <HeaderButton  $type={ButtonType.Dark}>{t("LogIn")}</HeaderButton>
+                {matched && <HeaderButton $type={ButtonType.Dark}>{t("LogIn")}</HeaderButton>}
             </Right>
         </Container>
     )
