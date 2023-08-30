@@ -7,16 +7,14 @@ import {useTranslations} from "use-intl";
 import {Button, ButtonType} from "@/shared/Button";
 import playOnline from "@public/assets/svg/playwhite.svg"
 import playComputer from "@public/assets/svg/computer.svg";
-import {useMediaQuery} from "@/hook/useMediaQuery";
 import {Typography} from "@/shared/Typography";
+
+
 
 const Home = ()=>{
     const t = useTranslations("Home");
-    const isBoard = useMediaQuery('(min-width:890px)');
-
 
     return(
-        <Container>
             <Main>
                 <ImgContainer>
                     <Board priority src = {board} alt = {'chess-board'}/>
@@ -51,15 +49,9 @@ const Home = ()=>{
                     </ButtonContainer>
                 </Content>
             </Main>
-        </Container>
     )
 }
 
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-`
 
 const Main = styled.main`
   margin-top: 20px;

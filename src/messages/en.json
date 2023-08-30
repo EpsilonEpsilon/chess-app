@@ -11,7 +11,10 @@
     "PlayComputerSubheader": "Play vs customizable training bots"
   },
   "Global": {
-    "SignIn":"Sign in",
+    "SignIn":"Sign up",
     "LogIn":"Log in"
+  },
+  "Register": {
+    "header": "Create your Chess.com account"
   }
 }

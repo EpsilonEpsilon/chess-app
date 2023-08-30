@@ -1,5 +1,5 @@
 'use client'
-import StyledComponentsRegistry from '../lib/registry';
+import StyledComponentsRegistry from '../../lib/styledComponents/registry';
 import styled, {ThemeProvider} from "styled-components";
 import theme from "@/theme";
 import React from "react";
@@ -28,7 +28,6 @@ export default async function RootLayout({children,  params: {locale}}: {
         notFound();
     }
 
-
   return (
       <html lang={locale} className = {openSans.className}>
       <head>
@@ -38,8 +37,11 @@ export default async function RootLayout({children,  params: {locale}}: {
           <StyledComponentsRegistry>
               <ThemeProvider theme={theme}>
                   <NextIntlClientProvider locale={locale} messages={messages}>
-                      <Root>{children}</Root>
-
+                      <Root>
+                          <Container>
+                              {children}
+                          </Container>
+                      </Root>
                   </NextIntlClientProvider>
               </ThemeProvider>
           </StyledComponentsRegistry>
@@ -48,4 +50,8 @@ export default async function RootLayout({children,  params: {locale}}: {
   )
 }
 
-
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+`

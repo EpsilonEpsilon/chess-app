@@ -3,7 +3,12 @@ import Link from "next/link";
 import sprite from "../../public/assets/icons/sprites.png"
 import {darken} from "@/helpers/darken";
 import React from "react";
+import {Button, ButtonType} from "@/shared/Button";
+import {useTranslations} from "use-intl";
+import {Router} from "@/router";
+
 export const Sidebar = ()=>{
+    const t = useTranslations("Global");
     return (
         <Divider>
             <Container>
@@ -12,6 +17,12 @@ export const Sidebar = ()=>{
                     <SidebarItem $positionX = "-22px" $positionY = "-67px"  href = '/'/>
                     <SidebarContainerText>Play</SidebarContainerText>
                 </SidebarContainer>
+
+
+                <ButtonContainer>
+                    <SidebarButton href = {Router.register} $type={ButtonType.Dark}>{t("SignIn")}</SidebarButton>
+                    <SidebarButton $type={ButtonType.Light}>{t("LogIn")}</SidebarButton>
+                </ButtonContainer>
             </Container>
         </Divider>
     )
@@ -29,11 +40,12 @@ const Container = styled.div`
   background: ${props => props.theme.palette.primary.color.secondary};
   width:145px;
   position: fixed;
+  padding: 0 5px;
   
 `
 
 const Divider = styled.div`
-    margin-right: 145px;
+    margin-right: 155px;
   @media(max-width:1000px){
     display: none;
   }
@@ -60,7 +72,6 @@ const SidebarContainer = styled.div`
   display:flex;
   cursor: pointer;
   align-items:center;
-  padding: 0 5px;
   transition: background-color .2s linear;
   &:hover {
     background-color: ${props => darken(props.theme.palette.primary.color.secondary, 0.15)}
@@ -69,3 +80,13 @@ const SidebarContainer = styled.div`
 
 const SidebarContainerText = styled.p`
 `
+const ButtonContainer = styled.div`
+    display: flex;
+  flex-direction: column;
+`
+const SidebarButton = styled(Button)`
+  width: 100%;
+  height: 40px;
+  margin:10px 0;
+`
+

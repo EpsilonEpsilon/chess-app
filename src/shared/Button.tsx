@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import {lighten} from "@/helpers/lighten";
+import Link from "next/link";
+import {Router} from "@/router";
+
 
 export enum ButtonType{
     Dark = "Dark",
@@ -13,8 +16,11 @@ interface ButtonProps{
     $width?:string,
     $height?:string
     $type:ButtonType
+    href?:string
 }
-export const Button = styled.button<ButtonProps>`
+export const Button = styled(Link).attrs((props)=>({
+    href: props.href || Router.default
+}))<ButtonProps>`
   background-color:${props => props.theme.palette.primary.color[('button' + props.$type) as ButtonStyleType]};
   width: ${props => props.$width};
   height: ${props => props.$height};
@@ -22,6 +28,9 @@ export const Button = styled.button<ButtonProps>`
   border-radius: 10px;
   cursor: pointer;
   transition: background-color .2s linear, box-shadow .2s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover{
     background-color: ${props => lighten(props.theme.palette.primary.color[('button' + props.$type) as ButtonStyleType], 0.25)};
     ${(props)=>{
