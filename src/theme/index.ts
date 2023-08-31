@@ -8,6 +8,8 @@ const theme = {
                 buttonShadowLight:'#558C44',
                 buttonDark:'#51504C',
                 buttonShadowDark:'#3D3C3A',
+
+                globalNeutral100:'#00000033'
             }
         }
     }
