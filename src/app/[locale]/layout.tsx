@@ -1,5 +1,3 @@
-'use client'
-import StyledComponentsRegistry from '../../lib/styledComponents/registry';
 import styled, {ThemeProvider} from "styled-components";
 import theme from "@/theme";
 import React from "react";
@@ -8,6 +6,9 @@ import {NextIntlClientProvider} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {openSans} from "@/fonts/OpenSans";
 import {Root} from "./Root"
+import favicon from "@public/assets/svg/favicon.svg"
+import {headers} from "next/headers";
+import {detectIsMobile} from "@/helpers/detectIsMobile";
 
 
 
@@ -27,31 +28,25 @@ export default async function RootLayout({children,  params: {locale}}: {
     } catch (error) {
         notFound();
     }
+    const headersList = headers();
+    const isMobile = detectIsMobile(headersList);
+
 
   return (
       <html lang={locale} className = {openSans.className}>
       <head>
           <title>Chess Application</title>
+          <link rel='icon' href={favicon.src}/>
       </head>
       <body  suppressHydrationWarning={true}>
-          <StyledComponentsRegistry>
-              <ThemeProvider theme={theme}>
-                  <NextIntlClientProvider locale={locale} messages={messages}>
-                      <Root>
-                          <Container>
-                              {children}
-                          </Container>
-                      </Root>
-                  </NextIntlClientProvider>
-              </ThemeProvider>
-          </StyledComponentsRegistry>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+              <Root isMobile = {isMobile}>
+                  {children}
+              </Root>
+          </NextIntlClientProvider>
       </body>
       </html>
   )
 }
 
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-`
+
