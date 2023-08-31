@@ -55,7 +55,7 @@ const Home = ()=>{
 
 const Main = styled.main`
   margin-top: 20px;
-  width: 100%;
+  width: calc(100% - 30px);
   height: 100%;
   display: flex;
   justify-content: space-evenly;

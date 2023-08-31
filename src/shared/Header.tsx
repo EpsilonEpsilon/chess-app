@@ -9,7 +9,7 @@ import {useMediaQuery} from "@/hook/useMediaQuery";
 export const Header = ()=>{
     const t = useTranslations("Global");
 
-    const matched = useMediaQuery('(min-width:400px)')
+
     return (
         <Container>
             <Left>
@@ -18,7 +18,7 @@ export const Header = ()=>{
             </Left>
             <Right>
                 <HeaderButton $type={ButtonType.Light}>{t("SignIn")}</HeaderButton>
-                {matched && <HeaderButton $type={ButtonType.Dark}>{t("LogIn")}</HeaderButton>}
+                <HeaderButton $matching $type={ButtonType.Dark}>{t("LogIn")}</HeaderButton>
             </Right>
         </Container>
     )
@@ -30,6 +30,9 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 5px 0;
+  @media(min-width: 1050px){
+    display: none;
+  }
 `
 
 const Left = styled.div`
@@ -49,7 +52,6 @@ const Menu = styled(AiOutlineMenu)`
 const Logo = styled(Link)`
   display: block;
   
-  
   &:before {
     background: url(${sprite.src}) -22px 10px;
     background-size: 9.4rem auto;
@@ -58,11 +60,17 @@ const Logo = styled(Link)`
     height: 45px;
     display: block;
     margin-left: 10px;
+    
   }
 `
-const HeaderButton = styled(Button)`
+const HeaderButton = styled(Button)<{$matching?:boolean}>`
     width: 75px;
   height: 35px;
   border-radius: 5px;
   margin: 0 15px;
+  ${props => {
+      if(props.$matching){
+          return `@media(max-width:400px){display:none}`
+      }
+  }}
 `

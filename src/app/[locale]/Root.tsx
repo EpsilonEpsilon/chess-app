@@ -8,42 +8,46 @@ import {usePathname} from "next/navigation";
 import StyledComponentsRegistry from "@/lib/styledComponents/registry";
 import theme from "@/theme";
 
-export const Root = ({children, isMobile}:{children:React.ReactNode, isMobile:boolean})=>{
+export const Root = ({children}:{children:React.ReactNode})=>{
     const matched = useMediaQuery('(max-width: 1050px)')
     const pathname = usePathname()
 
-    const getSidebar = ()=>{
+    const getRootComponents = ()=>{
         let pattern = /^\/(?:\w+\/)?register$/;
         if(pattern.test(pathname)) return null;
-        if(!matched || !isMobile) return <Sidebar/>
 
-        return <Header/>
+        return(
+            <>
+                <Header/>
+                <Sidebar/>
+            </>
+        )
     }
 
     return (
-        <Layout>
+
             <StyledComponentsRegistry>
                 <ThemeProvider theme={theme}>
-                    <Container>
-                        {getSidebar()}
+                    <Layout>
+                        {getRootComponents()}
                         {children}
-                    </Container>
+                    </Layout>
                 </ThemeProvider>
             </StyledComponentsRegistry>
-        </Layout>
     )
 }
 
 
 const Layout = styled.div`
-    display: flex;
+  display: flex;
+  width: 100%;
+  height: 100vh;
   @media(max-width: 1050px){
     flex-direction: column;
   }
 `
 
 const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
+  display: flex;  
+
 `

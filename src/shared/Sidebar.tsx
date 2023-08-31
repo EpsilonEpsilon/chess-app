@@ -42,6 +42,10 @@ const Container = styled.div`
   position: fixed;
   padding: 0 5px;
   
+  @media(max-width: 1050px){
+    display: none;
+  }
+  
 `
 
 const Divider = styled.div`
@@ -85,8 +89,8 @@ const ButtonContainer = styled.div`
   flex-direction: column;
 `
 const SidebarButton = styled(Button)`
-  width: 100%;
+  width: calc(100% - 20px);
   height: 40px;
-  margin:10px 0;
+  margin:10px 10px;
 `
 

@@ -28,8 +28,7 @@ export default async function RootLayout({children,  params: {locale}}: {
     } catch (error) {
         notFound();
     }
-    const headersList = headers();
-    const isMobile = detectIsMobile(headersList);
+
 
 
   return (
@@ -40,7 +39,7 @@ export default async function RootLayout({children,  params: {locale}}: {
       </head>
       <body  suppressHydrationWarning={true}>
           <NextIntlClientProvider locale={locale} messages={messages}>
-              <Root isMobile = {isMobile}>
+              <Root>
                   {children}
               </Root>
           </NextIntlClientProvider>
