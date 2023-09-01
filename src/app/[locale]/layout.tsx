@@ -1,5 +1,4 @@
-import styled, {ThemeProvider} from "styled-components";
-import theme from "@/theme";
+
 import React from "react";
 import '@/style/global.css';
 import {NextIntlClientProvider} from 'next-intl';
@@ -7,8 +6,6 @@ import {notFound} from 'next/navigation';
 import {openSans} from "@/fonts/OpenSans";
 import {Root} from "./Root"
 import favicon from "@public/assets/svg/favicon.svg"
-import {headers} from "next/headers";
-import {detectIsMobile} from "@/helpers/detectIsMobile";
 import { Analytics } from '@vercel/analytics/react';
 
 
@@ -43,7 +40,7 @@ export default async function RootLayout({children,  params: {locale}}: {
               <Root>
                   {children}
               </Root>
-              <Analytics/>
+              <Analytics mode = {"production"}/>
           </NextIntlClientProvider>
       </body>
       </html>
