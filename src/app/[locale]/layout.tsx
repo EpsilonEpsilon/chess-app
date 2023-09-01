@@ -9,6 +9,7 @@ import {Root} from "./Root"
 import favicon from "@public/assets/svg/favicon.svg"
 import {headers} from "next/headers";
 import {detectIsMobile} from "@/helpers/detectIsMobile";
+import {Analytics} from "@vercel/analytics/dist/react";
 
 
 
@@ -42,6 +43,7 @@ export default async function RootLayout({children,  params: {locale}}: {
               <Root>
                   {children}
               </Root>
+              <Analytics/>
           </NextIntlClientProvider>
       </body>
       </html>
