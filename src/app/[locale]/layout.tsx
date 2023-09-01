@@ -9,7 +9,7 @@ import {Root} from "./Root"
 import favicon from "@public/assets/svg/favicon.svg"
 import {headers} from "next/headers";
 import {detectIsMobile} from "@/helpers/detectIsMobile";
-import {Analytics} from "@vercel/analytics/dist/react";
+import { Analytics } from '@vercel/analytics/react';
 
 
 
