@@ -11,9 +11,10 @@ import {Button} from "./../ui/Button";
 import google from "@public/assets/svg/google.svg";
 import apple from "@public/assets/svg/apple.svg";
 import facebook from "@public/assets/svg/facebook.svg";
+import supabase from "@/lib/supabase/init";
 export default function Register(){
     const global = useTranslations();
-    
+
     return (
         <Layout>
             <Container>
@@ -32,7 +33,11 @@ export default function Register(){
                         <Divider/>
                     </DividerContainer>
                     <SocialButtonsContainer>
-                        <SocialButton>
+                        <SocialButton href = {Router.register} onClick = {()=>{
+                            supabase.auth.signInWithOAuth({provider:"google"}).then(()=>{
+
+                            })
+                        }}>
                             <Icon $url={google.src}/>
                             {global("Register.Social", {social:"Google"})}
                         </SocialButton>
@@ -143,7 +148,9 @@ const SocialButtonsContainer = styled.div`
   margin-top: 15px;
 `
 
-const SocialButton = styled(Button)`
+const SocialButton = styled(Button).attrs(()=>({
+
+}))`
     width: 100%;
   height: 50px;
   font-size: 15px;

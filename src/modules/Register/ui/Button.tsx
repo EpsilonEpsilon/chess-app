@@ -2,13 +2,14 @@ import styled from "styled-components";
 import {Router} from "@/router";
 import {darken} from "@/helpers/darken";
 import {lighten} from "@/helpers/lighten";
+import Link from "next/link";
 
 interface ButtonProps{
     $width?:string,
     $height?:string
     href?:string
 }
-export const Button = styled.a.attrs((props)=>({
+export const Button = styled(Link).attrs((props)=>({
     href:props.href || Router.default
 }))<ButtonProps>`
   width: ${props => props.$width};

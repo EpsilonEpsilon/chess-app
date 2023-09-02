@@ -1,14 +1,13 @@
-import createMiddleware from 'next-intl/middleware';
+import {NextRequest, NextResponse} from "next/server";
+import {withi18n} from "@/middlewares/withi18n";
 
-export default createMiddleware({
-    // A list of all locales that are supported
-    locales: ['en', 'de'],
-    // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
-    defaultLocale: 'en'
-});
 
-export const config = {
-    // Skip all paths that should not be internationalized. This example skips the
-    // folders "api", "_next" and all files with an extension (e.g. favicon.ico)
-    matcher: ['/((?!api|_next|.*\\..*).*)']
-};
+function defaultMiddleware(request:NextRequest) {
+    NextResponse.next();
+}
+
+
+export default withi18n(defaultMiddleware)
+
+
+
