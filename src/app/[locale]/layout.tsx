@@ -12,7 +12,7 @@ import { Analytics } from '@vercel/analytics/react';
 
 
 export function generateStaticParams() {
-    return [{locale: 'de'}, {locale: 'de'}];
+    return [{locale: 'en'}];
 }
 
 

@@ -13,7 +13,7 @@ export const withi18n:MiddlewareFactory = (next:NextMiddleware)=>{
         if(request.nextUrl.pathname.match(config.matcher) && !request.nextUrl.pathname.includes('_next') && !request.nextUrl.pathname.includes('_api')){
             const defaultLocale = request.headers.get('x-default-locale') || 'en';
             const handleI18nRouting = createMiddleware({
-                locales: ['en', 'de'],
+                locales: ['en'],
                 defaultLocale
             });
             const response = handleI18nRouting(request);
