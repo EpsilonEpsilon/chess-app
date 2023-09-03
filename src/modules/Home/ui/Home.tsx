@@ -8,11 +8,13 @@ import {Button, ButtonType} from "@/shared/Button";
 import playOnline from "@public/assets/svg/playwhite.svg"
 import playComputer from "@public/assets/svg/computer.svg";
 import {Typography} from "@/shared/Typography";
+import {useUserStore} from "@/model/store/useUserStore";
 
 
 
 const Home = ()=>{
     const t = useTranslations("Home");
+    const user = useUserStore();
 
     return(
             <Main>

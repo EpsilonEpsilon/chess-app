@@ -2,7 +2,7 @@
 import {ReactNode, useEffect} from "react";
 import {useRouter} from "next/navigation";
 import supabase from "@/lib/supabase/init";
-import {Router} from "@/router";
+import {useUserStore} from "@/model/store/useUserStore";
 interface IAuthProvider{
     children:ReactNode,
 }
@@ -13,11 +13,13 @@ enum AuthStateEvents{
 
 function AuthProvider(props:IAuthProvider){
     const router = useRouter();
-
+    const user = useUserStore();
 
     useEffect(()=>{
         supabase.auth.onAuthStateChange((event)=>{
-            if(event === AuthStateEvents.signIn) router.push('/profile')
+            if(event === AuthStateEvents.signIn){
+                user.toggleAuthState();
+            }
         })
     },[])
 

@@ -6,7 +6,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey,{
     auth:{
         autoRefreshToken: true,
         persistSession: false,
-        detectSessionInUrl: false,
+
     }
 })
 

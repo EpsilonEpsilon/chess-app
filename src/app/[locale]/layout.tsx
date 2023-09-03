@@ -7,6 +7,7 @@ import {openSans} from "@/fonts/OpenSans";
 import {Root} from "./Root"
 import favicon from "@public/assets/svg/favicon.svg"
 import { Analytics } from '@vercel/analytics/react';
+import AuthProvider from "@/model/auth/AuthProvider";
 
 
 
@@ -38,9 +39,11 @@ export default async function RootLayout({children,  params: {locale}}: {
       </head>
       <body  suppressHydrationWarning={true}>
           <NextIntlClientProvider locale={locale} messages={messages}>
-              <Root>
-                  {children}
-              </Root>
+              <AuthProvider>
+                  <Root>
+                      {children}
+                  </Root>
+              </AuthProvider>
               <Analytics mode = {"production"}/>
           </NextIntlClientProvider>
       </body>
