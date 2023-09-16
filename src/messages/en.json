@@ -15,8 +15,18 @@
     "LogIn":"Log in"
   },
   "Register": {
-    "header": "Create your Chess.com account",
+    "credentials": {
+      "header": "Create your Chess.com account"
+    },
+    "password": {
+      "header": "Enter your email and a password",
+      "subheader": "This allows you to log in on any device"
+    },
     "Social": "Continue with {social}",
-    "PlayAsGuest": "Play as Guest"
+    "PlayAsGuest": "Play as Guest",
+    "Input": {
+      "email": "Email",
+      "password": "Password"
+    }
   }
 }

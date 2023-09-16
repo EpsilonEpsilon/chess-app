@@ -5,7 +5,7 @@ import {darken} from "@/helpers/darken";
 import React from "react";
 import {Button, ButtonType} from "@/shared/Button";
 import {useTranslations} from "use-intl";
-import {Router} from "@/router";
+import {Routes} from "@/router";
 
 export const Sidebar = ()=>{
     const t = useTranslations("Global");
@@ -20,7 +20,7 @@ export const Sidebar = ()=>{
 
 
                 <ButtonContainer>
-                    <SidebarButton href = {Router.register} $type={ButtonType.Dark}>{t("SignIn")}</SidebarButton>
+                    <SidebarButton href = {Routes.register} $type={ButtonType.Dark}>{t("SignIn")}</SidebarButton>
                     <SidebarButton $type={ButtonType.Light}>{t("LogIn")}</SidebarButton>
                 </ButtonContainer>
             </Container>

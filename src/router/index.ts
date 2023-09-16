@@ -1,4 +1,4 @@
-export enum Router{
+export enum Routes{
     default = '/',
     register = '/register'
 }

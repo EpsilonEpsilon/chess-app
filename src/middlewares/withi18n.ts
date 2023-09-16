@@ -10,15 +10,17 @@ const config = {
 };
 export const withi18n:MiddlewareFactory = (next:NextMiddleware,  response:NextResponse)=>{
     return async(request:NextRequest, _next:NextFetchEvent)=>{
-        if(request.nextUrl.pathname.match(config.matcher) && !request.nextUrl.pathname.includes('_next') && !request.nextUrl.pathname.includes('_api')){
-            console.log(request.nextUrl.pathname)
+        if(
+            request.nextUrl.pathname.match(config.matcher)
+            && !request.nextUrl.pathname.includes('_next')
+            && !request.nextUrl.pathname.includes('_api')
+        ){
             const defaultLocale = request.headers.get('x-default-locale') || 'en';
             const handleI18nRouting = createMiddleware({
                 locales: ['en'],
                 defaultLocale
             });
             const response = handleI18nRouting(request);
-            // Step 3: Alter the response
             response.headers.set('x-default-locale', defaultLocale);
 
             return response;

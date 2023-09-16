@@ -5,7 +5,7 @@ import sprite from "@public/assets/icons/sprites.png"
 import {Button, ButtonType} from "@/shared/Button";
 import {useTranslations} from "use-intl";
 import {useMediaQuery} from "@/hook/useMediaQuery";
-import {Router} from "@/router";
+import {Routes} from "@/router";
 
 export const Header = ()=>{
     const t = useTranslations("Global");
@@ -18,7 +18,7 @@ export const Header = ()=>{
                 <Logo href = '/'/>
             </Left>
             <Right>
-                <HeaderButton href = {Router.register} $type={ButtonType.Light}>{t("SignIn")}</HeaderButton>
+                <HeaderButton href = {Routes.register} $type={ButtonType.Light}>{t("SignIn")}</HeaderButton>
                 <HeaderButton $matching $type={ButtonType.Dark}>{t("LogIn")}</HeaderButton>
             </Right>
         </Container>

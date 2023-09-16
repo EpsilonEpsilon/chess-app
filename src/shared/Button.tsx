@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {lighten} from "@/helpers/lighten";
 import Link from "next/link";
-import {Router} from "@/router";
+import {Routes} from "@/router";
 
 
 export enum ButtonType{
@@ -19,7 +19,7 @@ interface ButtonProps{
     href?:string
 }
 export const Button = styled(Link).attrs((props)=>({
-    href: props.href || Router.default
+    href: props.href || Routes.default
 }))<ButtonProps>`
   background-color:${props => props.theme.palette.primary.color[('button' + props.$type) as ButtonStyleType]};
   width: ${props => props.$width};

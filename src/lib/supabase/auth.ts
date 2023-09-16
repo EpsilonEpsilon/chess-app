@@ -1,13 +1,13 @@
 import supabase from "@/lib/supabase/init";
 import type {Provider} from "@supabase/gotrue-js";
 import {getAppUrl} from "@/helpers/getAppUrl";
-import {Router} from "@/router";
+import {Routes} from "@/router";
 
 
 interface IOptions{
-    redirectTo?:Router
+    redirectTo?:Routes
 }
 export const logInWithProvider = (provider:Provider, options?:IOptions)=>{
     supabase.auth.signInWithOAuth({provider,
-        options:{redirectTo:getAppUrl(options?.redirectTo || Router.default)}}).catch(console.error);
+        options:{redirectTo:getAppUrl(options?.redirectTo || Routes.default)}}).catch(console.error);
 }
