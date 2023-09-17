@@ -10,7 +10,7 @@ import {Header} from "@/modules/Register/ui/components/Header";
 import {PageHeader} from "@/modules/Register/ui/components/PageHeader";
 import hero from "@public/assets/svg/pawn-on-board.svg";
 import Image from "next/image";
-import Logo from "./components/Logo"
+import {Logo} from "./components/Logo"
 export const SingInWithCredentials = ()=>{
     const global = useTranslations();
 
