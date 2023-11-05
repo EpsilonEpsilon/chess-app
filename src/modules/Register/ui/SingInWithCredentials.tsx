@@ -30,7 +30,7 @@ export const SingInWithCredentials = ()=>{
                 <Divider/>
             </DividerContainer>
             <SocialButtonsContainer>
-                <SocialButton  href = {Routes.register} onClick = {()=>{logInWithProvider('google', {redirectTo:Routes.register})}}>
+                <SocialButton  href = {Routes.register}>
                     <Icon $url={google.src}/>
                     {global("Register.Social", {social:"Google"})}
                 </SocialButton>
