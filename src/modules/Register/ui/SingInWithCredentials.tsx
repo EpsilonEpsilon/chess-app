@@ -1,6 +1,5 @@
 import {Button as PrimaryButton, ButtonType} from "@/shared/Button";
 import {Routes} from "@/router";
-import {logInWithProvider} from "@/lib/supabase/auth";
 import styled from "styled-components";
 import {useTranslations} from "use-intl";
 import {Button} from "./components/Button";

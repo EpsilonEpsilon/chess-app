@@ -2,7 +2,6 @@
 import styled from "styled-components";
 import {useTranslations} from "use-intl";
 import {SingInWithCredentials} from "@/modules/Register/ui/SingInWithCredentials";
-import {SignWithPassword} from "@/modules/Register/ui/SignWithPassword";
 
 
 
@@ -13,7 +12,7 @@ export default function Register(){
         <Layout>
             <Container>
                 <Content>
-                    <SignWithPassword/>
+                   <SingInWithCredentials/>
                 </Content>
             </Container>
         </Layout>
