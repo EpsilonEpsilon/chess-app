@@ -4,10 +4,10 @@ import styled from "styled-components";
 import Image from "next/image";
 import board from './../../../../public/assets/img/chessboard-home.png'
 import {useTranslations} from "use-intl";
-import {Button, ButtonType} from "@/shared/Button";
+import {Button, ButtonType} from "@/shared/components/Button";
 import playOnline from "@public/assets/svg/playwhite.svg"
 import playComputer from "@public/assets/svg/computer.svg";
-import {Typography} from "@/shared/Typography";
+import {Typography} from "@/shared/components/Typography";
 import {useUserStore} from "@/model/store/useUserStore";
 
 

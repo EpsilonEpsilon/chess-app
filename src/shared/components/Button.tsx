@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {lighten} from "@/helpers/lighten";
+import {lighten} from "@/shared/helpers/lighten";
 import Link from "next/link";
 import {Routes} from "@/router";
 

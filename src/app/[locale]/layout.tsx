@@ -1,9 +1,9 @@
 
 import React from "react";
-import '@/style/global.css';
+import '@/shared/style/global.css';
 import {NextIntlClientProvider} from 'next-intl';
 import {notFound} from 'next/navigation';
-import {openSans} from "@/fonts/OpenSans";
+import {openSans} from "@public/assets/fonts/OpenSans";
 import {Root} from "./Root"
 import favicon from "@public/assets/svg/favicon.svg"
 import { Analytics } from '@vercel/analytics/react';

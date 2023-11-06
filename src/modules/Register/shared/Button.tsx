@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {Routes} from "@/router";
-import {darken} from "@/helpers/darken";
-import {lighten} from "@/helpers/lighten";
+import {darken} from "@/shared/helpers/darken";
+import {lighten} from "@/shared/helpers/lighten";
 import Link from "next/link";
 
 interface ButtonProps{

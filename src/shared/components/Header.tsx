@@ -2,9 +2,9 @@ import styled from "styled-components";
 import {AiOutlineMenu} from "react-icons/ai";
 import Link from "next/link";
 import sprite from "@public/assets/icons/sprites.png"
-import {Button, ButtonType} from "@/shared/Button";
+import {Button, ButtonType} from "@/shared/components/Button";
 import {useTranslations} from "use-intl";
-import {useMediaQuery} from "@/hook/useMediaQuery";
+import {useMediaQuery} from "@/shared/hook/useMediaQuery";
 import {Routes} from "@/router";
 
 export const Header = ()=>{

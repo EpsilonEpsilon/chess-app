@@ -1,10 +1,10 @@
 import {Routes} from "@/router";
-import {Header} from "@/modules/Register/ui/components/Header";
-import {Logo} from "../ui/components/Logo"
-import {PageHeader} from "@/modules/Register/ui/components/PageHeader";
+import {Header} from "@/modules/Register/shared/Header";
+import {Logo} from "@/modules/Register/shared/Logo"
+import {PageHeader} from "@/modules/Register/shared/PageHeader";
 import {useTranslations} from "use-intl";
 import styled from "styled-components";
-import {Input} from "@/shared/Input";
+import {Input} from "@/shared/components/Input";
 export const SignWithPassword = ()=>{
     const global = useTranslations();
     return (

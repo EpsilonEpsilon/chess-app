@@ -1,4 +1,4 @@
-@import "normalize.css";
+@import "../../../node_modules/normalize.css";
 
 body{
     background-color: #302E2B;

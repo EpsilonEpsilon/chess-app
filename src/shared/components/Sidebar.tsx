@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Link from "next/link";
-import sprite from "../../public/assets/icons/sprites.png"
-import {darken} from "@/helpers/darken";
+import sprite from "@public/assets/icons/sprites.png"
+import {darken} from "@/shared/helpers/darken";
 import React from "react";
-import {Button, ButtonType} from "@/shared/Button";
+import {Button, ButtonType} from "@/shared/components/Button";
 import {useTranslations} from "use-intl";
 import {Routes} from "@/router";
 

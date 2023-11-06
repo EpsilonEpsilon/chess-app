@@ -1,15 +1,15 @@
-import {Button as PrimaryButton, ButtonType} from "@/shared/Button";
+import {Button as PrimaryButton, ButtonType} from "@/shared/components/Button";
 import {Routes} from "@/router";
 import styled from "styled-components";
 import {useTranslations} from "use-intl";
-import {Button} from "./components/Button";
+import {Button} from "@/modules/Register/shared/Button";
 import google from "@public/assets/svg/google.svg"
 import Link from "next/link";
-import {Header} from "@/modules/Register/ui/components/Header";
-import {PageHeader} from "@/modules/Register/ui/components/PageHeader";
+import {Header} from "@/modules/Register/shared/Header";
+import {PageHeader} from "@/modules/Register/shared/PageHeader";
 import hero from "@public/assets/svg/pawn-on-board.svg";
 import Image from "next/image";
-import {Logo} from "./components/Logo"
+import {Logo} from "@/modules/Register/shared/Logo"
 export const SingInWithCredentials = ()=>{
     const global = useTranslations();
 

@@ -1,6 +1,6 @@
 // styled.d.ts
 import 'styled-components';
-import theme from "@/theme/index";
+import theme from "@/shared/theme/index";
 interface IPalette {
     main: string
     contrastText: string
