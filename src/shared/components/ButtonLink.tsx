@@ -18,7 +18,7 @@ interface ButtonProps{
     $type:ButtonType
     href?:string
 }
-export const Button = styled(Link).attrs((props)=>({
+export const ButtonLink = styled(Link).attrs((props)=>({
     href: props.href || Routes.default
 }))<ButtonProps>`
   background-color:${props => props.theme.palette.primary.color[('button' + props.$type) as ButtonStyleType]};
@@ -46,4 +46,32 @@ export const Button = styled(Link).attrs((props)=>({
           return `box-shadow: 0 10px 0px -1px ${props.theme.palette.primary.color[('buttonShadow' + props.$type) as ButtonShadowStyleType]}`;
       }
   }}
+`
+
+export const Button = styled("button")<ButtonProps>`
+  background-color:${props => props.theme.palette.primary.color[('button' + props.$type) as ButtonStyleType]};
+  width: ${props => props.$width};
+  height: ${props => props.$height};
+  border:none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color .2s linear, box-shadow .2s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    background-color: ${props => lighten(props.theme.palette.primary.color[('button' + props.$type) as ButtonStyleType], 0.25)};
+    ${(props)=>{
+    if(props.$3D){
+        return `box-shadow: 0 10px 0px -1px ${lighten(props.theme.palette.primary.color[('buttonShadow' + props.$type) as ButtonShadowStyleType], 0.15)}`;
+    }
+}}
+  }
+  
+  
+  ${(props)=>{
+    if(props.$3D){
+        return `box-shadow: 0 10px 0px -1px ${props.theme.palette.primary.color[('buttonShadow' + props.$type) as ButtonShadowStyleType]}`;
+    }
+}}
 `

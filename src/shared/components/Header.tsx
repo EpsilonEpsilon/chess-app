@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {AiOutlineMenu} from "react-icons/ai";
 import Link from "next/link";
 import sprite from "@public/assets/icons/sprites.png"
-import {Button, ButtonType} from "@/shared/components/Button";
+import {ButtonLink, ButtonType} from "@/shared/components/ButtonLink";
 import {useTranslations} from "use-intl";
 import {useMediaQuery} from "@/shared/hook/useMediaQuery";
 import {Routes} from "@/router";
@@ -64,7 +64,7 @@ const Logo = styled(Link)`
     
   }
 `
-const HeaderButton = styled(Button)<{$matching?:boolean}>`
+const HeaderButton = styled(ButtonLink)<{$matching?:boolean}>`
     width: 75px;
   height: 35px;
   border-radius: 5px;

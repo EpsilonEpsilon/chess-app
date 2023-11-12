@@ -1,18 +1,20 @@
-import {Button as PrimaryButton, ButtonType} from "@/shared/components/Button";
+import {ButtonLink as PrimaryButton, ButtonType} from "@/shared/components/ButtonLink";
 import {Routes} from "@/router";
 import styled from "styled-components";
 import {useTranslations} from "use-intl";
 import {Button} from "@/modules/Register/shared/Button";
-import google from "@public/assets/svg/google.svg"
 import Link from "next/link";
 import {Header} from "@/modules/Register/shared/Header";
 import {PageHeader} from "@/modules/Register/shared/PageHeader";
 import hero from "@public/assets/svg/pawn-on-board.svg";
 import Image from "next/image";
-import {Logo} from "@/modules/Register/shared/Logo"
-export const SingInWithCredentials = ()=>{
-    const global = useTranslations();
+import {Logo} from "@/shared/components/Logo"
 
+interface Props{
+    handleToggleSignIn:()=>void,
+}
+export const SingInWithCredentials = (props:Props)=>{
+    const global = useTranslations();
 
     return (
         <>
@@ -22,29 +24,29 @@ export const SingInWithCredentials = ()=>{
                 <LogIn href={Routes.default}>{global("Global.LogIn")}</LogIn>
             </Header>
             <PageHeader>{global("Register.credentials.header")}</PageHeader>
-            <HeroImage width = {460} height = {230} src = {hero.src} alt = "pawn on board"/>
-            <SignInButton $type = {ButtonType.Light} $3D>{global("Global.SignIn")}</SignInButton>
+            <HeroImage priority width = {460} height = {230} src = {hero.src} alt = "pawn on board"/>
+            <SignInButton href = {"#"} onClick = {props.handleToggleSignIn} $type = {ButtonType.Light} $3D>{global("Global.SignIn")}</SignInButton>
             <DividerContainer>
                 <Divider/>
                 <DividerText>OR</DividerText>
                 <Divider/>
             </DividerContainer>
-            <SocialButtonsContainer>
-                <SocialButton  href = {Routes.register}>
-                    <Icon $url={google.src}/>
-                    {global("Register.Social", {social:"Google"})}
-                </SocialButton>
-                {/*<SocialButton>*/}
-                {/*    <Icon $url={apple.src}/>*/}
-                {/*    {global("Register.Social", {social:"Apple"})}*/}
-                {/*</SocialButton>*/}
-                {/*<SocialButton onClick = {()=>{logInWithProvider('facebook', {redirectTo:Router.register})}}>*/}
-                {/*    <Icon $url={facebook.src}/>*/}
-                {/*    {global("Register.Social", {social:"Facebook"})}*/}
-                {/*</SocialButton>*/}
-            </SocialButtonsContainer>
+            {/*<SocialButtonsContainer>*/}
+            {/*    <SocialButton  href = {Routes.register}>*/}
+            {/*        <Icon $url={google.src}/>*/}
+            {/*        {global("Register.Social", {social:"Google"})}*/}
+            {/*    </SocialButton>*/}
+            {/*    <SocialButton>*/}
+            {/*        <Icon $url={apple.src}/>*/}
+            {/*        {global("Register.Social", {social:"Apple"})}*/}
+            {/*    </SocialButton>*/}
+            {/*    <SocialButton onClick = {()=>{logInWithProvider('facebook', {redirectTo:Router.register})}}>*/}
+            {/*        <Icon $url={facebook.src}/>*/}
+            {/*        {global("Register.Social", {social:"Facebook"})}*/}
+            {/*    </SocialButton>*/}
+            {/*</SocialButtonsContainer>*/}
 
-            <PlayAsGuestButton href = {Routes.default}>{global("Register.PlayAsGuest")}</PlayAsGuestButton>
+            <StyledButton $type = {ButtonType.Dark} $3D href = {Routes.default}>{global("Register.PlayAsGuest")}</StyledButton>
         </>
     )
 }
@@ -60,7 +62,7 @@ const DividerContainer = styled.div`
     display: flex;
     width: 100%;
   justify-content: center;
-  margin-top: 50px;
+  margin: 25px 0;
 `
 const Divider = styled.span`
     width: 160px;
@@ -127,6 +129,9 @@ const LogIn = styled(Link)`
 `
 
 const HeroImage = styled(Image)`
-  max-width: 100%;
-  height: 32vh;
+  width: auto;
+
+`
+const StyledButton = styled(PrimaryButton)`
+  height:50px;
 `

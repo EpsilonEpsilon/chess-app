@@ -8,13 +8,14 @@ const config = {
     // folders "api", "_next" and all files with an extension (e.g. favicon.ico)
     matcher: '/((?!api|_next|.*\\..*).*)'
 };
-export const withi18n:MiddlewareFactory = (next:NextMiddleware,  response:NextResponse)=>{
+const withi18n:MiddlewareFactory = (next:NextMiddleware,  response:NextResponse)=>{
     return async(request:NextRequest, _next:NextFetchEvent)=>{
         if(
             request.nextUrl.pathname.match(config.matcher)
             && !request.nextUrl.pathname.includes('_next')
             && !request.nextUrl.pathname.includes('_api')
         ){
+
             const defaultLocale = request.headers.get('x-default-locale') || 'en';
             const handleI18nRouting = createMiddleware({
                 locales: ['en'],
@@ -30,5 +31,6 @@ export const withi18n:MiddlewareFactory = (next:NextMiddleware,  response:NextRe
     }
 }
 
+export default withi18n;
 
 

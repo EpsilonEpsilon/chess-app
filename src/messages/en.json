@@ -22,11 +22,22 @@
       "header": "Enter your email and a password",
       "subheader": "This allows you to log in on any device"
     },
+    "button": "Continue",
     "Social": "Continue with {social}",
-    "PlayAsGuest": "Play as Guest",
-    "Input": {
-      "email": "Email",
-      "password": "Password"
-    }
+    "PlayAsGuest": "Play as Guest"
+  },
+  "Input": {
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirmation": "Password confirmation"
+  },
+  "InputsErrors": {
+    "required": "{field} field is required",
+    "passwordDontMatch": "Passwords must match",
+    "notValid": "{field} field is not valid"
+  },
+  "Server": {
+    "CREATE_NEW_USER_ERROR": "Creating new user server error"
   }
 }

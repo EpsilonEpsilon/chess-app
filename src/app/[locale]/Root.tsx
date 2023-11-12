@@ -13,7 +13,7 @@ export const Root = ({children}:{children:React.ReactNode})=>{
     const matched = useMediaQuery('(max-width: 1050px)')
     const pathname = usePathname()
     const getRootComponents = ()=>{
-        let pattern = /^\/(?:\w+\/)?register$/;
+        let pattern = /^.*\/(register|login).*$/;
         if(pattern.test(pathname)) return null;
 
         return(

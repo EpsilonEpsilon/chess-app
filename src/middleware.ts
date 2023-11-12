@@ -1,11 +1,6 @@
-import {NextMiddleware, NextRequest, NextResponse} from "next/server";
-import {withi18n} from "@/middlewares/withi18n";
+import {NextMiddleware, NextResponse} from "next/server";
 import {MiddlewareFactory} from "@/middlewares/types";
-
-function defaultMiddleware(request:NextRequest) {
- return NextResponse.next();
-}
-
+import {withi18n, withPrivateRoute,} from "@/middlewares";
 export function stackMiddlewares(
     functions: MiddlewareFactory[] = [],
     index = 0
@@ -19,9 +14,7 @@ export function stackMiddlewares(
     return () => response;
 }
 
-// @ts-ignore
-
-export default stackMiddlewares([withi18n]);
+export default stackMiddlewares([withPrivateRoute, withi18n]);
 
 
 

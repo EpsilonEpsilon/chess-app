@@ -8,8 +8,9 @@ const theme = {
                 buttonShadowLight:'#558C44',
                 buttonDark:'#51504C',
                 buttonShadowDark:'#3D3C3A',
-
-                globalNeutral100:'#00000033'
+                colorDanger:'#fa412d',
+                globalNeutral100:'#00000033',
+                inputColor:"rgb(190, 189, 189)",
             }
         }
     }

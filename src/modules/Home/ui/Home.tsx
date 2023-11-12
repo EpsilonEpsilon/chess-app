@@ -4,18 +4,14 @@ import styled from "styled-components";
 import Image from "next/image";
 import board from './../../../../public/assets/img/chessboard-home.png'
 import {useTranslations} from "use-intl";
-import {Button, ButtonType} from "@/shared/components/Button";
+import {ButtonLink, ButtonType} from "@/shared/components/ButtonLink";
 import playOnline from "@public/assets/svg/playwhite.svg"
 import playComputer from "@public/assets/svg/computer.svg";
 import {Typography} from "@/shared/components/Typography";
-import {useUserStore} from "@/model/store/useUserStore";
-
 
 
 const Home = ()=>{
     const t = useTranslations("Home");
-    const user = useUserStore();
-
     return(
             <Main>
                 <ImgContainer>
@@ -136,7 +132,7 @@ const ButtonContainer = styled.div`
   margin-top: 20px;
 `
 
-const HeaderButton = styled(Button)`
+const HeaderButton = styled(ButtonLink)`
   margin: 15px 0;
   width: 100%;
   max-width: 380px;

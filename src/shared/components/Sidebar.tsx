@@ -3,7 +3,7 @@ import Link from "next/link";
 import sprite from "@public/assets/icons/sprites.png"
 import {darken} from "@/shared/helpers/darken";
 import React from "react";
-import {Button, ButtonType} from "@/shared/components/Button";
+import {ButtonLink, ButtonType} from "@/shared/components/ButtonLink";
 import {useTranslations} from "use-intl";
 import {Routes} from "@/router";
 
@@ -21,7 +21,7 @@ export const Sidebar = ()=>{
 
                 <ButtonContainer>
                     <SidebarButton href = {Routes.register} $type={ButtonType.Dark}>{t("SignIn")}</SidebarButton>
-                    <SidebarButton $type={ButtonType.Light}>{t("LogIn")}</SidebarButton>
+                    <SidebarButton href = {Routes.login} $type={ButtonType.Light}>{t("LogIn")}</SidebarButton>
                 </ButtonContainer>
             </Container>
         </Divider>
@@ -88,7 +88,7 @@ const ButtonContainer = styled.div`
     display: flex;
   flex-direction: column;
 `
-const SidebarButton = styled(Button)`
+const SidebarButton = styled(ButtonLink)`
   width: calc(100% - 20px);
   height: 40px;
   margin:10px 10px;

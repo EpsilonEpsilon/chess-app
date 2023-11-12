@@ -39,11 +39,11 @@ export default async function RootLayout({children,  params: {locale}}: {
       </head>
       <body  suppressHydrationWarning={true}>
           <NextIntlClientProvider locale={locale} messages={messages}>
-              <AuthProvider>
-                  <Root>
+              <Root>
+                  <AuthProvider>
                       {children}
-                  </Root>
-              </AuthProvider>
+                  </AuthProvider>
+              </Root>
               <Analytics mode = {"production"}/>
           </NextIntlClientProvider>
       </body>
