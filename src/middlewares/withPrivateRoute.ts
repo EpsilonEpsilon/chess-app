@@ -10,6 +10,7 @@ const privateRoute = [Routes.home];
 const publicRoutes = [Routes.default, Routes.register, Routes.login];
 const withPrivateRoute:MiddlewareFactory = (next:NextMiddleware)=>{
     return async(request:NextRequest, _next:NextFetchEvent)=>{
+
         if(!request.nextUrl.pathname.match(config.matcher)
             || request.nextUrl.pathname.includes('_next')
             || request.nextUrl.pathname.includes('_api')) return next(request, _next);

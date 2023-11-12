@@ -13,6 +13,9 @@ const AuthProvider = (props:IProps)=>{
     const router = useRouter();
     const userStore = useUserStore();
     useEffect(()=>{
+        window.onpopstate = (data)=>{
+            router.refresh();
+        }
         jwtService.on(EventEmitterEvents.login, ()=>{
             router.push(Routes.home);
             userStore.toggleAuthState();
