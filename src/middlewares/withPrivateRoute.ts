@@ -20,6 +20,8 @@ const withPrivateRoute:MiddlewareFactory = (next:NextMiddleware)=>{
         const token = request.cookies.get("token");
         if(!token && isPrivateRoute)  return NextResponse.redirect(new URL(Routes.default, request.url));
         if(!token && isPublicRoute) return next(request, _next);
+
+        if(!token) throw new Error("Token cannot be undefined or null");
         const response = await fetch(`${BASE_URL}/auth/verify`, {
             method:"POST",
             headers:{
