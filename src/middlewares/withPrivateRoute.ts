@@ -18,7 +18,8 @@ const withPrivateRoute:MiddlewareFactory = (next:NextMiddleware)=>{
         if(!isPublicRoute || !isPublicRoute)  return next(request, _next);
 
         const token = request.cookies.get("token");
-        if(!token)  return NextResponse.redirect(new URL(Routes.default, request.url));
+        if(!token && isPrivateRoute)  return NextResponse.redirect(new URL(Routes.default, request.url));
+        if(!token && isPublicRoute) return next(request, _next);
         const response = await fetch(`${BASE_URL}/auth/verify`, {
             method:"POST",
             headers:{
@@ -32,7 +33,7 @@ const withPrivateRoute:MiddlewareFactory = (next:NextMiddleware)=>{
             if(!json.data.verified) return NextResponse.redirect(new URL(Routes.default, request.url));
             return next(request, _next);
         }
-        if(isPublicRoute && process.env.NODE_ENV === "production"){
+        if(isPublicRoute){
             return NextResponse.redirect(new URL(Routes.home, request.url));
         }
 
