@@ -1,4 +1,4 @@
-import axios from "axios";
+import RequestManager from "@/model/requests/RequestManager";
 
 interface IBody{
     username:string,
@@ -15,7 +15,7 @@ interface IResponse{
 }
 
 const postRegistration = async(body:IBody)=>{
-    const response = await axios.post<IResponse>("/auth/registration", body);
+    const response = await RequestManager.post<IResponse>({url:"/auth/registration", options:{body}});
     if(response.status !== 200) throw new Error("Unexpected server response");
     return response;
 }

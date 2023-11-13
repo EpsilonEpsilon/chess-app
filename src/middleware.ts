@@ -1,6 +1,7 @@
 import {NextMiddleware, NextResponse} from "next/server";
 import {MiddlewareFactory} from "@/middlewares/types";
 import {withi18n, withPrivateRoute,} from "@/middlewares";
+
 export function stackMiddlewares(
     functions: MiddlewareFactory[] = [],
     index = 0

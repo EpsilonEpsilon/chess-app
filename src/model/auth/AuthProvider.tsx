@@ -7,24 +7,36 @@ import {Routes} from "@/router";
 import {useUserStore} from "@/model/store/useUserStore";
 
 interface IProps{
-    children:ReactNode
+    children:ReactNode,
+    userProfile?:{
+        username:"string",
+        email:string
+    }
 }
 const AuthProvider = (props:IProps)=>{
     const router = useRouter();
     const userStore = useUserStore();
+
     useEffect(()=>{
-        window.onpopstate = (data)=>{
+        window.onpopstate = ()=>{
             router.refresh();
         }
         jwtService.on(EventEmitterEvents.login, ()=>{
             router.push(Routes.home);
             userStore.toggleAuthState();
+            router.refresh();
+
         })
         jwtService.on(EventEmitterEvents.logout, ()=>{
             router.push(Routes.default);
-            userStore.toggleAuthState();
         })
     },[])
+
+    useEffect(()=>{
+        if(!props.userProfile) return;
+
+        userStore.setUserProfileInfo(props.userProfile?.email, props.userProfile?.username)
+    },[props.userProfile?.email, props.userProfile?.username])
 
     return props.children
 }

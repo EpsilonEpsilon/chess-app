@@ -1,7 +1,7 @@
 import {MiddlewareFactory} from "@/middlewares/types";
 import {NextFetchEvent, NextMiddleware, NextRequest, NextResponse} from "next/server";
 import {Routes} from "@/router";
-import {BASE_URL} from "@/api";
+import API from "@/api";
 
 const config = {
     matcher: '/((?!api|_next|.*\\..*).*)'
@@ -23,17 +23,11 @@ const withPrivateRoute:MiddlewareFactory = (next:NextMiddleware)=>{
         if(!token && isPublicRoute) return next(request, _next);
 
         if(!token) throw new Error("Token cannot be undefined or null");
-        const response = await fetch(`${BASE_URL}/auth/verify`, {
-            method:"POST",
-            headers:{
-                "Content-Type": "application/json",
-            },
-            body:JSON.stringify({token:token.value})
-        })
-        const json = await response.json();
+        const {data} = await API.auth.verifyToken({token:token.value})
+
         if(isPrivateRoute){
-            if(!json) return NextResponse.redirect(new URL(Routes.default, request.url));
-            if(!json.data.verified) return NextResponse.redirect(new URL(Routes.default, request.url));
+            if(!data) return NextResponse.redirect(new URL(Routes.default, request.url));
+            if(!data.data.verified) return NextResponse.redirect(new URL(Routes.default, request.url));
             return next(request, _next);
         }
         if(isPublicRoute){

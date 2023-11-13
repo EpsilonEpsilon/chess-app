@@ -1,10 +1,12 @@
-import axios from "axios";
 import auth from "@/api/auth";
+import RequestManager from "@/model/requests/RequestManager";
+import user from "@/api/user";
 export const BASE_URL = "https://chess-app-server.vercel.app/api"
-axios.defaults.baseURL = BASE_URL;
+RequestManager.baseUrl = BASE_URL;
 
 const API = {
-    auth
+    auth,
+    user,
 }
 
 export default API;

@@ -1,5 +1,6 @@
-const Page = ()=>{
-    return <div>Home page</div>
+const Page = async ()=>{
+    return <div>{123}</div>
 }
+
 
 export default Page;
