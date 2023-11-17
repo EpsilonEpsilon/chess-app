@@ -1,3 +1,5 @@
+import {ResponseWrapper} from "@/api/auth/type";
+import HeaderManager from "@/model/requests/HeaderManager";
 
 interface Request{
     url:string,
@@ -10,15 +12,12 @@ interface Request{
 
 interface Response<T>{
     status:number,
-    data:T | any
+    data:T
 }
-class RequestManager{
+class RequestManager extends HeaderManager{
     public  baseUrl?:string
-    public  headers:{[key:string]:any} = {
-        "Content-Type": "application/json",
-    };
 
-    public async get<T>(data:Request):Promise<Response<T>>{
+    public async get<T>(data:Request):Promise<Response<ResponseWrapper<T>>>{
         const request = await fetch(this.baseUrl + data.url,{
             method:"GET",
             body:JSON.stringify(data.options?.body),
@@ -32,7 +31,7 @@ class RequestManager{
             data:result
         }
     }
-    public async post<T>(data:Request):Promise<Response<T>>{
+    public async post<T>(data:Request):Promise<Response<ResponseWrapper<T>>>{
         const request = await fetch(this.baseUrl + data.url,{
             method:"POST",
             body:JSON.stringify(data.options?.body),
@@ -47,6 +46,8 @@ class RequestManager{
         }
     }
 }
+
+
 
 const instance  = new RequestManager();
 export default instance;

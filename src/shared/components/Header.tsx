@@ -4,12 +4,10 @@ import Link from "next/link";
 import sprite from "@public/assets/icons/sprites.png"
 import {ButtonLink, ButtonType} from "@/shared/components/ButtonLink";
 import {useTranslations} from "use-intl";
-import {useMediaQuery} from "@/shared/hook/useMediaQuery";
 import {Routes} from "@/router";
 
 export const Header = ()=>{
     const t = useTranslations("Global");
-
 
     return (
         <Container>

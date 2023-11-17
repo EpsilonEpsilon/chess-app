@@ -4,10 +4,7 @@ interface IBody{
 }
 
 interface IResponse{
-    status:string,
-    data:{
-        verified:boolean
-    }
+    verified:boolean
 }
 const verifyToken = async (body:IBody)=>{
     const response = await RequestManager.post<IResponse>({url:"/auth/verify", options:{

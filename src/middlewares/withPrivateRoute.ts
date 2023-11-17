@@ -24,7 +24,6 @@ const withPrivateRoute:MiddlewareFactory = (next:NextMiddleware)=>{
 
         if(!token) throw new Error("Token cannot be undefined or null");
         const {data} = await API.auth.verifyToken({token:token.value})
-
         if(isPrivateRoute){
             if(!data) return NextResponse.redirect(new URL(Routes.default, request.url));
             if(!data.data.verified) return NextResponse.redirect(new URL(Routes.default, request.url));

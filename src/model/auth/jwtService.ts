@@ -2,7 +2,6 @@ import EventEmitter from "./EventEmitter";
 import axios from "axios";
 import Cookies from "js-cookie";
 import {jwtTokenExpiration} from "@/shared/helpers";
-import postRegistration from "@/api/auth/postRegistration";
 import API from "@/api";
 
 export enum EventEmitterEvents{

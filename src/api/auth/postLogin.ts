@@ -6,10 +6,7 @@ interface IBody{
 }
 
 interface IResponse{
-    status:"success" | "error",
-    data:{
-        token:string,
-    }
+    token:string,
 }
 const postLogin = async (body:IBody)=>{
     const response = await RequestManager.post<IResponse>({url:"/auth/login", options:{body}});

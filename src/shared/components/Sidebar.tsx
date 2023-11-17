@@ -6,9 +6,11 @@ import React from "react";
 import {ButtonLink, ButtonType} from "@/shared/components/ButtonLink";
 import {useTranslations} from "use-intl";
 import {Routes} from "@/router";
+import {useUserStore} from "@/model/store/useUserStore";
 
 export const Sidebar = ()=>{
     const t = useTranslations("Global");
+    const {isLoggedIn} = useUserStore();
     return (
         <Divider>
             <Container>
@@ -18,11 +20,12 @@ export const Sidebar = ()=>{
                     <SidebarContainerText>Play</SidebarContainerText>
                 </SidebarContainer>
 
-
-                <ButtonContainer>
-                    <SidebarButton href = {Routes.register} $type={ButtonType.Dark}>{t("SignIn")}</SidebarButton>
-                    <SidebarButton href = {Routes.login} $type={ButtonType.Light}>{t("LogIn")}</SidebarButton>
-                </ButtonContainer>
+                {!isLoggedIn && (
+                    <ButtonContainer>
+                        <SidebarButton href = {Routes.register} $type={ButtonType.Dark}>{t("SignIn")}</SidebarButton>
+                        <SidebarButton href = {Routes.login} $type={ButtonType.Light}>{t("LogIn")}</SidebarButton>
+                    </ButtonContainer>
+                )}
             </Container>
         </Divider>
     )

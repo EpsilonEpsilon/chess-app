@@ -9,7 +9,7 @@ import {useUserStore} from "@/model/store/useUserStore";
 interface IProps{
     children:ReactNode,
     userProfile?:{
-        username:"string",
+        username:string,
         email:string
     }
 }
@@ -32,12 +32,13 @@ const AuthProvider = (props:IProps)=>{
         })
     },[])
 
-    useEffect(()=>{
-        if(!props.userProfile) return;
-
-        userStore.setUserProfileInfo(props.userProfile?.email, props.userProfile?.username)
-    },[props.userProfile?.email, props.userProfile?.username])
-
+   const handleSetProfile = ()=>{
+       if(!props.userProfile) return;
+       if(userStore.isLoggedIn) return;
+       userStore.setUserProfileInfo(props.userProfile?.email, props.userProfile?.username);
+       userStore.toggleAuthState();
+   }
+    handleSetProfile();
     return props.children
 }
 

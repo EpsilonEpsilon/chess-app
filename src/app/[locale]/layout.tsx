@@ -29,6 +29,7 @@ export default async function RootLayout({children,  params: {locale}}: {
         notFound();
     }
     const userProfile = await fetchUserProfile();
+
   return (
       <html lang={locale} className = {openSans.className}>
       <head>
@@ -37,11 +38,12 @@ export default async function RootLayout({children,  params: {locale}}: {
       </head>
       <body  suppressHydrationWarning={true}>
           <NextIntlClientProvider locale={locale} messages={messages}>
-              <Root>
-                  <AuthProvider userProfile={userProfile?.data}>
+              <AuthProvider userProfile={userProfile?.data}>
+                  <Root>
                       {children}
-                  </AuthProvider>
-              </Root>
+                  </Root>
+              </AuthProvider>
+
               <Analytics mode = {"production"}/>
           </NextIntlClientProvider>
       </body>
@@ -52,10 +54,7 @@ export default async function RootLayout({children,  params: {locale}}: {
 async function fetchUserProfile(){
     const token = cookies().get("token")?.value
     if(!token) return;
-    RequestManager.headers = {
-        ...RequestManager.headers,
-        "Authorization":`Bearer ${token}`,
-    }
+    RequestManager.setHeader("Authorization",`Bearer ${token}`)
     const response =  await Api.user.getProfile();
     return response.data;
 }

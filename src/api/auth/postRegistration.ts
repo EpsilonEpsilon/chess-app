@@ -8,10 +8,7 @@ interface IBody{
 }
 
 interface IResponse{
-    status:"success" | "error",
-    data:{
-        token:string,
-    }
+    token:string,
 }
 
 const postRegistration = async(body:IBody)=>{

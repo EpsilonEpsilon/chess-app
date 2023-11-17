@@ -1,5 +1,5 @@
-const Page = async ()=>{
-    return <div>{123}</div>
+const Page =  ()=>{
+    return <div>Home page</div>
 }
 
 

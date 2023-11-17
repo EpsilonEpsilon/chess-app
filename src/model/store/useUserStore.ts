@@ -3,7 +3,7 @@ import { devtools } from 'zustand/middleware'
 type State = {
     isLoggedIn:boolean,
     email?:string,
-    password?:string,
+    username?:string,
 }
 
 type Actions = {
@@ -17,7 +17,7 @@ export const useUserStore = create<State & Actions, [["zustand/devtools", State 
         return {isLoggedIn:!state.isLoggedIn}
     }),
     setUserProfileInfo:(email, password)=>set((state)=>{
-        return {email:email, password:password}
+        return {email:email, username:password}
     })
 })))
 
