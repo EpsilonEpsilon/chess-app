@@ -1,7 +1,6 @@
 "use client"
-import {App} from "@/views/App";
-import {useTranslations} from "use-intl";
+import {Home} from "../../../views/Home";
 
-export default function Home() {
-  return <App/>
+export default function Page() {
+  return <Home/>
 }

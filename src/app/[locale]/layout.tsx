@@ -1,13 +1,12 @@
 import React from "react";
 import "./globals.css";
 import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+import {Open_Sans} from "next/font/google";
 import {Providers} from "@/lib/providers"
 import Root from "@/app/[locale]/root";
 import {getMessages} from "next-intl/server";
-import {NextIntlClientProvider} from "next-intl";
 
-const inter = Inter({ subsets: ["latin"] });
+const openSans = Open_Sans({weight:["300", "400", "500", "600"],subsets:["latin"]})
 
 export const metadata: Metadata = {
   title: "Chess application",
@@ -23,9 +22,10 @@ export default async function RootLayout({
   params: {locale: string};
 }>) {
     const messages = await getMessages();
+
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body className={openSans.className}>
       <Providers messages={messages} locale={locale}>
           <Root>
               {children}
@@ -35,3 +35,4 @@ export default async function RootLayout({
     </html>
   );
 }
+

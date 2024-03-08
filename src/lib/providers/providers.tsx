@@ -1,7 +1,8 @@
 import React, {ReactNode} from "react";
-import {ReduxProvider, Registry, ThemeProvider} from "./index"
+import {Registry, ThemeProvider} from "./index"
 import {AbstractIntlMessages} from "use-intl";
 import {NextIntlClientProvider} from "next-intl";
+import StoreProvider from "@/lib/providers/store-provider";
 
 interface IProps{
     children:ReactNode,
@@ -14,9 +15,9 @@ const Providers:React.FC<IProps> = ({children, messages, locale})=>{
         <NextIntlClientProvider messages={messages} locale={locale}>
             <Registry>
                 <ThemeProvider>
-                    <ReduxProvider>
+                    <StoreProvider>
                         {children}
-                    </ReduxProvider>
+                    </StoreProvider>
                 </ThemeProvider>
             </Registry>
         </NextIntlClientProvider>

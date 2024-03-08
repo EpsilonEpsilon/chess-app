@@ -1,13 +1,18 @@
-'use client'
-import React, { useRef } from 'react'
-import { Provider } from 'react-redux'
-import makeStore, {AppStore} from "../store";
+"use client"
+import React from "react";
+import {HasChildren} from "@/types/types";
+import StoreContext, {initializeStore} from "@/store/root";
 
-export default function StoreProvider({children}: { children: React.ReactNode}) {
-    const storeRef = useRef<AppStore>()
-    if (!storeRef.current) {
-        storeRef.current = makeStore()
-    }
 
-    return <Provider store={storeRef.current}>{children}</Provider>
+interface IProps extends HasChildren{}
+const storeProvider:React.FC<IProps> = ({children})=>{
+    return (
+        <>
+            <StoreContext.Provider value={initializeStore()}>
+                {children}
+            </StoreContext.Provider>
+        </>
+    )
 }
+
+export default storeProvider;

@@ -3,6 +3,8 @@ import {MiddlewareFactory} from "@/lib/middleware/type";
 import {NextMiddleware, NextResponse} from "next/server";
 import {i18nMiddleware} from "@/lib/middleware";
 
+
+//i18nMiddleware should be last one in the array
 const middlewares = [i18nMiddleware];
 const stackMiddleware = (functions:MiddlewareFactory[], index:number = 0):NextMiddleware=>{
     const current = middlewares[index];
